@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 
 import rospy
-from pkg1.msg import depth
+from messagesWithPython.msg import depth
 
 
 def reaction(msg):
