@@ -1,7 +1,7 @@
 #include "ros/ros.h"
 #include "simpleService/multiply.h"
 
-bool multiple(simpleService::multiply::Request &req,
+bool callBack(simpleService::multiply::Request &req,
               simpleService::multiply::Response &res)
 {
   res.sum = req.a * req.b;
@@ -13,10 +13,10 @@ bool multiple(simpleService::multiply::Request &req,
 int main(int argc, char **argv)
 {
   ros::init(argc, argv, "service_cpp_server");
-  ros::NodeHandle n;
+  ros::NodeHandle node;
 
-  ros::ServiceServer service = n.advertiseService("service_cpp", multiple);
-  ROS_INFO("Ready to multiple two ints.");
+  ros::ServiceServer service = node.advertiseService("service_cpp", callBack);
+  ROS_INFO("Ready...");
   ros::spin();
 
   return 0;
