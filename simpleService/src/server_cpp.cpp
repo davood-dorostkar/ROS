@@ -1,8 +1,8 @@
 #include "ros/ros.h"
-#include "service/service.h"
+#include "simpleService/multiply.h"
 
-bool multiple(service::service::Request  &req,
-         service::service::Response &res)
+bool multiple(simpleService::multiply::Request &req,
+              simpleService::multiply::Response &res)
 {
   res.sum = req.a * req.b;
   ROS_INFO("request: x=%ld, y=%ld", (long int)req.a, (long int)req.b);
@@ -12,10 +12,10 @@ bool multiple(service::service::Request  &req,
 
 int main(int argc, char **argv)
 {
-  ros::init(argc, argv, "multiple_two_ints_server");
+  ros::init(argc, argv, "service_cpp_server");
   ros::NodeHandle n;
 
-  ros::ServiceServer service = n.advertiseService("multiple_two_ints", multiple);
+  ros::ServiceServer service = n.advertiseService("service_cpp", multiple);
   ROS_INFO("Ready to multiple two ints.");
   ros::spin();
 

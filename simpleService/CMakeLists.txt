@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.0.2)
-project(service)
+project(simpleService)
 
 ## Compile as C++11, supported in ROS Kinetic and newer
 # add_compile_options(-std=c++11)
@@ -58,7 +58,7 @@ find_package(catkin REQUIRED COMPONENTS
 ## Generate services in the 'srv' folder
  add_service_files(
    FILES
-   service.srv
+   multiply.srv
 #   Service2.srv
  )
 
@@ -208,12 +208,12 @@ include_directories(
 # catkin_add_nosetests(test)
 
 
-add_executable(multiple_two_ints_server src/add_two_ints_server.cpp)
-target_link_libraries(multiple_two_ints_server ${catkin_LIBRARIES})
+add_executable(server_cpp src/server_cpp.cpp)
+target_link_libraries(server_cpp ${catkin_LIBRARIES})
 
 
-add_executable(multiple_two_ints_client src/add_two_ints_client.cpp)
-target_link_libraries(multiple_two_ints_client ${catkin_LIBRARIES})
+add_executable(client_cpp src/client_cpp.cpp)
+target_link_libraries(client_cpp ${catkin_LIBRARIES})
 
 
 
